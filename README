@@ -1,0 +1,75 @@
+		boiler-plate project
+		====================
+
+This is just a boiler-plate project template to ease the start of new
+projects.
+
+
+CMake build modes (Release, Debug, Tests, Profile)
+--------------------------------------------------
+This CMake build comes with several modes:
+ - 'Release' : Normal release of the software.
+ - 'Debug' : Add all debug options (symbols, debug output, assert).
+ - 'Tests' : Add all tests and code coverage (requires 'lcov').
+ - 'Profile' : Add all profiling options to check software performance.
+
+Activating a build mode:
+
+$> mkdir Release
+$> cd Release/
+$> cmake [-DCMAKE_BUILD_TYPE=Release] ../
+$> make
+
+Or, to enable 'Debug', 'Tests' or 'Profile' (here 'Debug', but replace
+'Debug' by one of the others if you want it):
+
+$> mkdir Debug
+$> cd Debug/
+$> cmake -DCMAKE_BUILD_TYPE=Debug ../
+$> make
+
+$> mkdir Tests
+$> cd Tests/
+$> cmake -DCMAKE_BUILD_TYPE=Tests ../
+$> make
+
+$> mkdir Profile
+$> cd Profile/
+$> cmake -DCMAKE_BUILD_TYPE=Profile ../
+$> make
+
+Running tests and coverage
+--------------------------
+Requires: lcov, gprof
+
+Running the tests:
+
+$> mkdir Tests
+$> cd Tests/
+$> cmake -DCMAKE_BUILD_TYPE=Tests ../
+$> make
+$> make test
+Running tests...
+...
+$> ctest -VV
+...
+
+Running for coverage and displaying it:
+
+$> make coverage
+$> firefox coverage/index.html
+
+Using clang development tools
+-----------------------------
+Requires: clang-format, clang-tidy
+
+* clang-format can automatically format your code to fullfill the
+coding-style of the project. You just need to type:
+
+$> make clang-format
+
+* clang-tidy can automatically make a static-analysis of the code,
+  looking for possible bugs and oddities that should be looked at. To
+  get a full analysis of the code just type:
+
+$> make clang-tidy
